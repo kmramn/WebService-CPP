@@ -1,0 +1,102 @@
+<wsdl:definitions
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+    xmlns:tns="https://calculator.example.org/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    targetNamespace="https://calculator.example.org/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:ws="http://www.w3.org/TR/ws-policy"
+    xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:xmime="http://www.w3.org/2005/05/xmlmime" >
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://calculator.example.org/" elementFormDefault="qualified" >
+      <xsd:element name="AddRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="a" type="xsd:int" />
+            <xsd:element minOccurs="0" name="b" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SubtractRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="a" type="xsd:int" />
+            <xsd:element minOccurs="0" name="b" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SubtractResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="ICalculator_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Subtract_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubtractRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Subtract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubtractResponse" />
+  </wsdl:message>
+
+  <wsdl:portType name="ICalculator">
+    <wsdl:operation name="Add">
+      <wsdl:input message="tns:ICalculator_Add_InputMessage" />
+      <wsdl:output message="tns:ICalculator_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:input message="tns:ICalculator_Subtract_InputMessage" />
+      <wsdl:output message="tns:ICalculator_Subtract_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="DefaultBinding_ICalculator" type="tns:ICalculator">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="https://calculator.example.org/ICalculator/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="https://calculator.example.org/ICalculator/Subtract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="CalculatorService">
+    <wsdl:port name="ICalculator" binding="tns:DefaultBinding_ICalculator">
+      <soap:address location="https://calculator.example.org/ICalculator" />
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
