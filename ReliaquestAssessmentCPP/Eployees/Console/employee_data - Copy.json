@@ -1,0 +1,10 @@
+[
+    {
+        "employee_age": 30,
+        "employee_email": "john.doe@example.com",
+        "employee_name": "John Doe",
+        "employee_salary": 75000,
+        "employee_title": "Software Engineer",
+        "id": 1
+    }
+]

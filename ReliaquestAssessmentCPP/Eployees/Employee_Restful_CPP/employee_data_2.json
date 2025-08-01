@@ -1,0 +1,26 @@
+[
+    {
+        "employee_age": 1,
+        "employee_email": "l@h.com",
+        "employee_name": "Daniel",
+        "employee_salary": 1,
+        "employee_title": "SS",
+        "id": 2
+    },
+    {
+        "employee_age": 49,
+        "employee_email": "kmramn@yahoo.com",
+        "employee_name": "Ramnath KM",
+        "employee_salary": 3300000,
+        "employee_title": "C++ Developer",
+        "id": 3
+    },
+    {
+        "employee_age": 45,
+        "employee_email": "a@b.com",
+        "employee_name": "Ramnath",
+        "employee_salary": 120000,
+        "employee_title": "Systems Architect",
+        "id": 4
+    }
+]
